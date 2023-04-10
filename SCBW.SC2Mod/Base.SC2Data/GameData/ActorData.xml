@@ -3039,4 +3039,391 @@
         <Icon value="Assets\Textures\RadarIcon2.dds"/>
         <IconArcLength value="3.250000"/>
     </CActorRange>
+    
+    
+    <CActorAction id="BroodlingAttackSc1" parent="GenericAttack" effectAttack="NeedleClawsSc1">
+        <ImpactMap index="None" Sound="Broodling_AttackImpactSc1"/>
+        <ShieldFlashType value="Header"/>
+    </CActorAction>
+
+    <CActorSound id="BroodlingAttackLaunchSc1" parent="SoundOneShot">
+        <On Terms="WeaponStart.NeedleClawsSc1Weapon.AttackStart" Send="Create"/>
+        <Sound value="Broodling_AttackLaunch2"/>
+    </CActorSound>
+
+
+
+    <CActorModel id="DevourerMPAcidSporesImpactSc1" parent="ModelAnimationStyleContinuous">
+        <EditorCategories value=""/>
+        <On Terms="Behavior.DevourerMPAcidSporesSc1.On" Send="Create"/>
+        <On Terms="Behavior.DevourerMPAcidSporesSc1.Off" Send="AnimBracketStop BSD"/>
+        <Host Subject="_Unit"/>
+        <HostSiteOps Ops="SOpAttachCenter"/>
+        <AutoScaleFactor value="1.000000"/>
+    </CActorModel>
+
+    <CActorAction id="DevourerMPWeaponAttackSc1" parent="GenericAttack" effectImpact="DevourerMPWeaponDamageSc1" 
+
+effectLaunch="DevourerMPWeaponLaunchSc1">
+        <LaunchAssets Sound="DevourerMP_AttackLaunchSc1"/>
+        <Missile value="DevourerMPWeaponMissileSc1"/>
+        <ImpactMap index="None" Model="DevourerMPWeaponImpactSc1" Sound="DevourerMP_AttackImpactSc1"/>
+    </CActorAction>
+
+<CActorMissile id="DevourerMPWeaponMissileSc1" parent="GenericAttackMissile" unitName="DevourerMPWeaponMissileSc1"/>
+
+
+    <CActorAction id="GuardianMPAttackSc1" parent="GenericAttack" effectImpact="GuardianMPWeaponDamageSc1" 
+
+effectLaunch="GuardianMPWeaponLMSc1">
+        <LaunchAttachQuery Methods="AMFilterWeaponLeft"/>
+        <LaunchAssets Sound="GuardianMP_AttackLaunchSc1"/>
+        <Missile value="GuardianMPWeaponMissileSc1"/>
+        <ImpactMap index="None" Model="GuardianMPWeaponImpactSc1" Sound="GuardianMP_AttackImpactSc1"/>
+    </CActorAction>
+
+    <CActorMissile id="GuardianMPWeaponMissileSc1" parent="GenericAttackMissile" unitName="GuardianMPWeaponSc1">
+        <Model value="GuardianMPWeaponMissile2"/>
+    </CActorMissile>
+
+    <CActorAction id="HydraliskMeleeAttackSc1" parent="GenericAttack" effectAttack="HydraliskMeleeSc1">
+        <ImpactPhysics>
+            <Name value="Attack"/>
+            <MatchKeys value="Basic"/>
+            <AttackAnimProps value="Cover"/>
+            <Physics value="HydraliskMeleeAttackForce"/>
+        </ImpactPhysics>
+        <ShieldFlashType value="Header"/>
+        <AttackAnimName value="AttackCover"/>
+    </CActorAction>
+
+    <CActorAction id="HydraliskAttackSc1" parent="GenericAttack" effectImpact="NeedleSpinesDamageSc1" 
+
+effectLaunch="NeedleSpinesLaunchMissileSc1">
+        <LaunchSiteOps Ops="SOpAttachHarness SOpForwardImpactGuide"/>
+        <LaunchAttachQuery Methods="AMFilterWeaponSetA0"/>
+        <LaunchAssets Model="HydraliskAttackLaunchSc11" Sound="Hydralisk_GroundAttackLaunchSc1"/>
+        <Missile value="HydraliskAttackMissileSc1"/>
+        <ImpactMap index="None" Model="HydraliskAttackImpactSc1" Sound="Hydralisk_AttackImpactRangedSc1"/>
+        <ImpactMap index="Flesh" ModelReaction="BloodTargetImpact"/>
+        <ImpactPhysics Name="NeedleSpinesImpact" MatchKeys="Basic" Physics="HydraliskAttackDeathForce"/>
+        <AcquisitionYawHalfArc value="20.000000"/>
+        <AcquisitionPitchHalfArc value="20.000000"/>
+        <AccuracyHalfArc value="25.000000"/>
+    </CActorAction>
+
+
+    <CActorMissile id="HydraliskAttackMissileSc1" parent="GenericAttackMissile" unitName="NeedleSpinesWeaponSc1">
+        <On Terms="ActorCreation; ValidateUnit HydraliskRangeUpgraded" Send="ModelSwap HydraliskMissile_Upgrade"/>
+    </CActorMissile>
+
+
+
+    <CActorAction id="MutaliskAttackSegment1Sc1" parent="GenericAttack" effectImpact="GlaiveWurmU1Sc1" effectLaunch="GlaiveWurmSc1">
+        <On index="6" Terms="Effect.GlaiveWurmSc1.Start; At Caster; ValidateUnit NotHotSExplosiveGlaiveAndNotHotSViciousGlaive" 
+
+Send="Create"/>
+        <LaunchAssets Sound="Mutalisk_Segment1AttackLaunchSc1"/>
+        <Missile value="MutaliskAttackSegment1Missile3Sc1"/>
+        <ImpactSite value="MutaliskAttackSegment1ImpactSite"/>
+        <ImpactMap index="None" Model="MutaliskAttackSegment1Impact" Sound="Mutalisk_Segment1AttackImpactSc1"/>
+        <ImpactPhysics Name="GlaveWurmImpact" MatchKeys="Basic" Physics="MutaliskAttackDeathForce"/>
+        <ImpactPhysics Name="GlaveWurmImpactAir" MatchKeys="BasicAir" Physics="MutaliskAttackAirDeathForce"/>
+    </CActorAction>
+
+
+
+
+    <CActorMissile id="MutaliskAttackSegment1Missile3Sc1" parent="GenericAttackMissile" unitName="GlaiveWurmWeaponSc1">
+        <Model value="GlaiveWurmWeapon"/>
+    </CActorMissile>
+
+
+
+    <CActorAction id="MutaliskAttackSegment2Sc1" parent="GenericAttack" effectImpact="GlaiveWurmU2Sc1" effectLaunch="GlaiveWurmM2Sc1">
+        <On index="6" Terms="Effect.GlaiveWurmM2Sc1.Start; At Caster; !ValidateUnit HaveHotSViciousGlaive" Send="Create"/>
+        <LaunchRequest Subject="_ImpactGuide" Actor="Find"/>
+        <LaunchAssets Sound="Mutalisk_Segment1AttackLaunchSc1"/>
+        <Missile value="MutaliskAttackSegment2Missile3Sc1"/>
+        <ImpactSite value="MutaliskAttackSegment2ImpactSite"/>
+        <ImpactMap index="None" Model="MutaliskAttackSegment2Impact" Sound="Mutalisk_Segment1AttackImpactSc1"/>
+        <ImpactPhysics Name="GlaveWurmImpact" MatchKeys="Basic" Physics="MutaliskAttackDeathForce"/>
+        <ImpactPhysics Name="GlaveWurmImpactAir" MatchKeys="BasicAir" Physics="MutaliskAttackAirDeathForce"/>
+    </CActorAction>
+
+
+    <CActorMissile id="MutaliskAttackSegment2Missile3Sc1" parent="GenericAttackMissile" unitName="GlaiveWurmM2WeaponSc1">
+        <Model value="GlaiveWurmM2Weapon"/>
+    </CActorMissile>
+
+    <CActorAction id="MutaliskAttackSegment3Sc1" parent="GenericAttack" effectImpact="GlaiveWurmU3Sc1" effectLaunch="GlaiveWurmM3Sc1">
+        <On index="6" Terms="Effect.GlaiveWurmM3Sc1.Start; At Caster; !ValidateUnit HaveHotSViciousGlaive" Send="Create"/>
+        <LaunchRequest Subject="MutaliskAttackSegment2ImpactSite" Actor="Find"/>
+        <LaunchAssets Sound="Mutalisk_Segment1AttackLaunchSc1"/>
+        <Missile value="MutaliskAttackSegment3MissileSc1"/>
+        <ImpactSite value="MutaliskAttackSegment3ImpactSite"/>
+        <ImpactMap index="None" Model="MutaliskAttackSegment3Impact" Sound="Mutalisk_Segment1AttackImpactSc1"/>
+        <ImpactPhysics Name="GlaveWurmImpact" MatchKeys="Basic" Physics="MutaliskAttackDeathForce"/>
+        <ImpactPhysics Name="GlaveWurmImpactAir" MatchKeys="BasicAir" Physics="MutaliskAttackAirDeathForce"/>
+    </CActorAction>
+
+    <CActorMissile id="MutaliskAttackSegment3MissileSc1" parent="GenericAttackMissile" unitName="GlaiveWurmM3WeaponSc1">
+        <Model value="GlaiveWurmM3Weapon"/>
+    </CActorMissile>
+
+    <CActorAction id="MutaliskAttackSegment1ExplosiveGlaiveSc1" parent="GenericAttack" effectImpact="MutaliskExplosiveGlaive" 
+
+effectLaunch="GlaiveWurmSc1">
+        <On index="6" Terms="Effect.GlaiveWurmSc1.Start; At Caster; ValidateUnit HaveHotSExplosiveGlaiveAndNotHotSViciousGlaive" 
+
+Send="Create"/>
+        <LaunchAssets Sound="Mutalisk_Segment1AttackLaunchSc1"/>
+        <Missile value="MutaliskAttackSegment1Missile3Sc1"/>
+        <ImpactSite value="MutaliskAttackSegment1ImpactSite"/>
+        <ImpactMap index="None" Model="ExplosiveGlaiveImpact" Sound="ExplosiveGlaiveImpactSoundSc1"/>
+    </CActorAction>
+
+    <CActorAction id="MutaliskAttackSegment1ViciousGlaiveSc1" parent="GenericAttack" effectImpact="GlaiveWurmU1Sc1" 
+
+effectLaunch="GlaiveWurmSc1">
+        <On index="6" Terms="Effect.GlaiveWurmSc1.Start; At Caster; ValidateUnit NotHotSExplosiveGlaiveAndHaveHotSViciousGlaive" 
+
+Send="Create"/>
+        <LaunchAssets Sound="Mutalisk_Segment1AttackLaunchSc1"/>
+        <Missile value="MutaliskAttackSegment1Missile3Sc1"/>
+        <ImpactSite value="MutaliskAttackSegment1ImpactSite"/>
+        <ImpactMap index="None" Model="ViciouisGlaiveAttackImpact" Sound="Mutalisk_Segment1AttackImpactSc1"/>
+    </CActorAction>
+
+    <CActorAction id="MutaliskAttackSegment2ViciousGlaiveSc1" parent="GenericAttack" effectImpact="GlaiveWurmU2Sc1" 
+
+effectLaunch="GlaiveWurmM2Sc1">
+        <On index="6" Terms="Effect.GlaiveWurmM2Sc1.Start; At Caster; ValidateUnit HaveHotSViciousGlaive" Send="Create"/>
+        <LaunchRequest Subject="_ImpactGuide" Actor="Find"/>
+        <LaunchAssets Sound="Mutalisk_Segment2AttackLaunchSc1"/>
+        <Missile value="MutaliskAttackSegment2Missile3Sc1"/>
+        <ImpactSite value="MutaliskAttackSegment2ImpactSite"/>
+        <ImpactMap index="None" Model="ViciouisGlaiveAttackImpact" Sound="Mutalisk_Segment2AttackImpactSc1"/>
+    </CActorAction>
+
+    <CActorAction id="MutaliskAttackSegment3ViciousGlaiveSc1" parent="GenericAttack" effectImpact="GlaiveWurmU3Sc1" 
+
+effectLaunch="GlaiveWurmM3Sc1">
+        <On index="6" Terms="Effect.GlaiveWurmM3Sc1.Start; At Caster; ValidateUnit HaveHotSViciousGlaive" Send="Create"/>
+        <LaunchRequest Subject="_ImpactGuide" Actor="Find"/>
+        <LaunchAssets Sound="Mutalisk_Segment3AttackLaunchSc1"/>
+        <Missile value="MutaliskAttackSegment3MissileSc1"/>
+        <ImpactSite value="MutaliskAttackSegment3ImpactSite"/>
+        <ImpactMap index="None" Model="ViciouisGlaiveAttackImpact" Sound="Mutalisk_Segment3AttackImpactSc1"/>
+    </CActorAction>
+
+    <CActorAction id="MutaliskAttackSegment4Sc1" parent="GenericAttack" effectImpact="GlaiveWurmU4Sc1" effectLaunch="GlaiveWurmM4Sc1">
+        <LaunchRequest Subject="MutaliskAttackSegment3ImpactSite" Actor="Find"/>
+        <LaunchAssets Sound="Mutalisk_Segment3AttackLaunchSc1"/>
+        <Missile value="MutaliskAttackSegment4MissileSc1"/>
+        <ImpactSite value="MutaliskAttackSegment4ImpactSite"/>
+        <ImpactMap index="None" Model="ViciouisGlaiveAttackImpact" Sound="Mutalisk_Segment3AttackImpactSc1"/>
+    </CActorAction>
+
+    <CActorMissile id="MutaliskAttackSegment4MissileSc1" parent="GenericAttackMissile" unitName="GlaiveWurmM4WeaponSc1">
+        <Model value="GlaiveWurmM4Weapon"/>
+    </CActorMissile>
+
+    <CActorAction id="MutaliskAttackSegment5Sc1" parent="GenericAttack" effectImpact="GlaiveWurmU5Sc1" effectLaunch="GlaiveWurmM5Sc1">
+        <LaunchRequest Subject="MutaliskAttackSegment4ImpactSite" Actor="Find"/>
+        <LaunchAssets Sound="Mutalisk_Segment3AttackLaunchSc1"/>
+        <Missile value="MutaliskAttackSegment5MissileSc1"/>
+        <ImpactSite value="MutaliskAttackSegment5ImpactSite"/>
+        <ImpactMap index="None" Model="ViciouisGlaiveAttackImpact" Sound="Mutalisk_Segment3AttackImpactSc1"/>
+    </CActorAction>
+
+    <CActorMissile id="MutaliskAttackSegment5MissileSc1" parent="GenericAttackMissile" unitName="GlaiveWurmM5WeaponSc1">
+        <Model value="GlaiveWurmM5Weapon"/>
+    </CActorMissile>
+
+    <CActorAction id="MutaliskAttackSegment6Sc1" parent="GenericAttack" effectImpact="GlaiveWurmU6Sc1" effectLaunch="GlaiveWurmM6Sc1">
+        <LaunchRequest Subject="MutaliskAttackSegment5ImpactSite" Actor="Find"/>
+        <LaunchAssets Sound="Mutalisk_Segment3AttackLaunchSc1"/>
+        <Missile value="MutaliskAttackSegment6MissileSc1"/>
+        <ImpactSite value="MutaliskAttackSegment6ImpactSite"/>
+        <ImpactMap index="None" Model="ViciouisGlaiveAttackImpact" Sound="Mutalisk_Segment3AttackImpactSc1"/>
+    </CActorAction>
+
+    <CActorMissile id="MutaliskAttackSegment6MissileSc1" parent="GenericAttackMissile" unitName="GlaiveWurmM6WeaponSc1">
+        <Model value="GlaiveWurmM6Weapon"/>
+    </CActorMissile>
+
+
+<CActorMissile id="RoachAttackMissileSc1" parent="GenericAttackMissile" unitName="AcidSalivaWeaponSc1"/>
+
+
+    <CActorAction id="RoachAttackSc1" parent="GenericAttack" effectImpact="AcidSalivaUSc1" effectLaunch="AcidSalivaLMSc1">
+        <LaunchAttachQuery Methods="Head"/>
+        <LaunchAssets Sound="Roach_AttackLaunchRangedSc1"/>
+        <Missile value="RoachAttackMissileSc1"/>
+        <ImpactMap index="None" Model="RoachMissileImpactSc1" Sound="Roach_AttackImpactRangedSc1"/>
+        <ImpactPhysics Name="AcidSalivaImpact" MatchKeys="Basic" Physics="RoachAttackDeathForce"/>
+        <AcquisitionYawHalfArc value="10.000000"/>
+        <AcquisitionPitchHalfArc value="15.000000"/>
+        <AccuracyHalfArc value="15.000000"/>
+    </CActorAction>
+
+    <CActorSound id="RoachAttackStartSc1" parent="SoundOneShot">
+        <On Terms="WeaponStart.RoachMeleeSc1Weapon.AttackStart" Send="Create"/>
+        <Sound value="Roach_AttackLaunchMeleeSc1"/>
+    </CActorSound>
+
+    <CActorAction id="RoachMeleeAttackSc1" parent="GenericAttack" effectAttack="RoachUMeleeSc1">
+        <ImpactMap index="None" Model="RoachAttackImpactSc1" Sound="Roach_AttackImpactMeleeSc1"/>
+        <ImpactPhysics>
+            <Name value="Attack00"/>
+            <MatchKeys value="Basic"/>
+            <AttackAnimProps value="Cover,00"/>
+            <Physics value="RoachMeleeAttackRightBladeForce"/>
+        </ImpactPhysics>
+        <ImpactPhysics>
+            <Name value="Attack01"/>
+            <MatchKeys value="Basic"/>
+            <AttackAnimProps value="Cover,01"/>
+            <Physics value="RoachMeleeAttackRightBladeForce"/>
+        </ImpactPhysics>
+        <ImpactPhysics>
+            <Name value="Attack02"/>
+            <MatchKeys value="Basic"/>
+            <AttackAnimProps value="Cover,02"/>
+            <Physics value="RoachMeleeAttackForce02"/>
+        </ImpactPhysics>
+        <ImpactPhysics>
+            <Name value="Attack03"/>
+            <MatchKeys value="Basic"/>
+            <AttackAnimProps value="Cover,03"/>
+            <Physics value="RoachMeleeAttackForce03"/>
+        </ImpactPhysics>
+        <AttackAnimName value="AttackCover"/>
+    </CActorAction>
+
+
+    <CActorAction id="LurkerMPAttackSpikeSc1" parent="AoEAttackBase">
+        <On Terms="Effect.LurkerMPDamageSc1.Start; At Effect" Send="Create"/>
+        <On Terms="Effect.LurkerMPDamageSc1.Start; At Effect" Send="ActionDamage"/>
+        <On Terms="Effect.LurkerMPDamageSc1.Stop; At Effect" Send="Destroy"/>
+        <DamageSiteOps Ops="SOpAttachHarness SOpShadow" HoldPosition="1" HoldRotation="1"/>
+        <DamageAttachQuery Methods="AMFilterTarget AMProximityAll"/>
+        <DamageMap index="Flesh" ModelReaction="LurkerMPAttackDeathBloodGeyser"/>
+        <DamageModelReaction value="LurkerMPAttackDamageModelReaction"/>
+        <Lifetime value="2.600000"/>
+    </CActorAction>
+
+
+    <CActorSound id="LurkerMPAttackSpikeSoundSc1" parent="SoundOneShot">
+        <FogVisibility value="Visible"/>
+        <On Terms="Effect.LurkerMPCUSc1.Start" Send="Create"/>
+        <HostSiteOps Ops="SOpTargetPoint SOpShadow SOpForwardCasterPoint"/>
+        <Sound value="Lurker_AttackLaunch2Sc1"/>
+    </CActorSound>
+
+
+
+    <CActorModel id="LurkerMPAttackSpikeEx2Sc1" parent="ModelAnimationStyleOneShot">
+        <On Terms="Effect.LurkerMPSearchSc1.Start" Send="Create"/>
+        <On Terms="ActorCreation" Send="AnimPlay Attack Attack"/>
+        <On Terms="ActorCreation" Send="TimerSet 1.500000 DelayDestroy"/>
+        <On Terms="TimerExpired; TimerName DelayDestroy" Send="Destroy"/>
+        <HostSiteOps Ops="LurkerMPSOpAoEVariancer SOpShadow SOpForwardCasterPoint SOp2DRotation LurkerMPSOpShadowSpine SOpRotVariancerUp15"/>
+        <Model value="LurkerAttackSpikeEx2Sc1"/>
+    </CActorModel>
+
+
+    <CActorModel id="LurkerMPAttackSpikeImpactSc1" parent="ModelAnimationStyleOneShot">
+        <On Terms="Effect.LurkerMPDamageSc1.Start; At Target" Send="Create"/>
+        <HostSiteOps Ops="SOpShadow"/>
+    </CActorModel>
+
+
+    <CActorForceSphere id="LurkerStabForceSc1">
+        <On Terms="Effect.LurkerMPSearchSc1.Start" Send="Create"/>
+        <On Terms="ActorCreation" Send="Create LurkerStabUpForce"/>
+        <Duration value="0.150000"/>
+        <Magnitude value="25.000000,12.000000"/>
+        <Radius value="0.625000,0.100000"/>
+    </CActorForceSphere>
+
+    <CActorSound id="ActorSound_SunkenColonly_TentacleImpact_Sc1" parent="SoundOneShot">
+        <On Terms="Effect.SunkenColonlyDamage_Sc1.Start; At Target" Send="Create"/>
+        <Sound value="SunkenColonly_TentacleImpact_Sc1"/>
+    </CActorSound>
+
+    <CActorSound id="ActorSound_SunkenColonly_TentacleVox3_Sc1" parent="SoundOneShot">
+        <On Terms="Effect.SunkenColonlyDamage_Sc1.Start; At Target" Send="Create"/>
+        <Sound value="SunkenColonly_TentacleVox_Sc1"/>
+    </CActorSound>
+
+
+    <CActorAction id="SunkenColonlyAttack_Sc1" parent="GenericAttack" effectImpact="SunkenColonlyDamage_Sc1" effectLaunch="SunkenColonly_Sc1">
+        <LaunchAttachQuery Methods="Origin"/>
+        <LaunchAssets Sound="SunkenColonly_AttackLaunch_Sc1"/>
+        <Missile value="SunkenColonlyAttackMissile_Sc1"/>
+        <ImpactSiteOps Ops="SOpShadow SOpForwardLaunchGuide"/>
+        <ImpactMap index="None" Model="" Sound="SunkenColonly_TentacleImpact2_Sc1"/>
+        <ShieldFlashType value="Full"/>
+    </CActorAction>
+
+    <CActorModel id="SunkenColonlyAttackImpact_Sc1">
+        <Flags index="SuppressSaveLoad" value="1"/>
+        <On Terms="Effect.SunkenColonlyDamage_Sc1.Start" Send="Create"/>
+        <On Terms="ActorCreation" Send="$Birth 0 0.000000 0.000000 1.500000 AsDuration"/>
+        <On Terms="AnimDone; AnimName Birth" Send="Destroy"/>
+        <On Terms="Effect.ImpalerAbathurDamage.Start" Send="Create"/>
+        <On Terms="ActorCreation" Send="TextureSelectById SunkenZergTenticlesprojectile_diffusSc1"/>
+        <HostSiteOps Ops="SOpShadow SOpAttachOriginStationary"/>
+        <Model value="SunkenAttackImpactSc1"/>
+    </CActorModel>
+
+
+    <CActorMissile id="SunkenColonlyAttackMissile_Sc1" parent="GenericAttackMissile" unitName="SunkenColonlyWeapon_Sc1">
+        <On Terms="ActorCreation" Send="SetOpacity 0.500000"/>
+        <HostSiteOps Ops="SOpShadow"/>
+        <Model value="Invisible"/>
+        <Baselines index="Stand" AnimProps="Unburrow" BlendIn="-1.000000" BlendOut="-1.000000"/>
+    </CActorMissile>
+
+    <CActorAction id="UltraliskAttackSc1" parent="GenericAttack" effectAttack="KaiserBladesDamageSc1">
+        <ImpactPhysics>
+            <Name value="AttackSpell"/>
+            <MatchKeys value="Basic"/>
+            <AttackAnimProps value="Spell,A"/>
+            <Physics value="UltraliskAttackForce"/>
+        </ImpactPhysics>
+        <ShieldFlashType value="Full"/>
+    </CActorAction>
+
+
+    <CActorSound id="UltraliskAttackImpactSc1" parent="SoundOneShot">
+        <On Terms="Effect.KaiserBladesDamageSc1; At Target" Send="Create"/>
+        <Host Subject="_Selectable"/>
+        <Sound value="Ultralisk_AttackImpactSc1"/>
+    </CActorSound>
+
+
+    <CActorSound id="UltraliskAttackStartSc1" parent="SoundOneShot">
+        <On Terms="WeaponStart.KaiserBladesSc1Weapon.AttackStart" Send="Create"/>
+        <Sound value="Ultralisk_AttackLaunchSc1"/>
+    </CActorSound>
+
+
+    <CActorAction id="ZerglingAttackSc1" parent="GenericAttack" effectAttack="ClawsSc1">
+        <On Terms="Effect.SelendisInterceptorU.Start; At Caster" Send="Create"/>
+        <ImpactAttachQuery Methods="AMFilterTargetVolumes"/>
+        <ImpactMap index="None" Sound="Zergling_AttackImpactSc1"/>
+        <ShieldFlashType value="Header"/>
+    </CActorAction>
+
+
+    <CActorSound id="ZerglingAttackStart3" parent="SoundOneShot">
+        <On Terms="WeaponStart.ClawsSc1Weapon.AttackStart" Send="Create"/>
+        <On Terms="WeaponStart.ClawsDevouringOne.AttackStart" Send="Create"/>
+        <Sound value=""/>
+    </CActorSound>
+    
+    
 </Catalog>
