@@ -1105,4 +1105,427 @@
         <AttributeFactor index="Armored" value="0.3334"/>
         <ShieldFactor value="0.3334"/>
     </CEffectDamage>
+    
+    <CEffectDamage id="NeedleClawsSc1" parent="DU_WEAP">
+        <EditorCategories value="Race:Zerg"/>
+        <Amount value="4"/>
+    </CEffectDamage>
+
+    <CEffectApplyBehavior id="DevourerMPWeaponApplySc1">
+        <EditorCategories value="Race:Zerg"/>
+        <Behavior value="DevourerMPAcidSporesSc1"/>
+    </CEffectApplyBehavior>
+
+
+    <CEffectDamage id="DevourerMPWeaponDamageSc1" parent="DU_WEAP">
+        <EditorCategories value="Race:Zerg"/>
+        <Visibility value="Visible"/>
+        <Kind value="Ranged"/>
+        <Amount value="25"/>
+    </CEffectDamage>
+
+
+    <CEffectLaunchMissile id="DevourerMPWeaponLaunchSc1">
+        <EditorCategories value="Race:Zerg"/>
+        <ImpactEffect value="DevourerMPWeaponSet2"/>
+        <AmmoUnit value="DevourerMPWeaponMissileSc1"/>
+        <Movers Link="MissileDefault" IfRangeLTE="1"/>
+        <Movers Link="DevourerMPWeaponMissileSc1" IfRangeLTE="4"/>
+    </CEffectLaunchMissile>
+
+
+    <CEffectEnumArea id="DevourerMPWeaponSearch2">
+        <EditorCategories value="Race:Zerg"/>
+        <ExcludeArray Value="Target"/>
+        <SearchFilters value="Air;Player,Ally,Neutral,Structure,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="1.5" Effect="DevourerMPWeaponApplySc1"/>
+    </CEffectEnumArea>
+
+    <CEffectSet id="DevourerMPWeaponSet2">
+        <EditorCategories value="Race:Zerg"/>
+        <EffectArray value="DevourerMPWeaponDamageSc1"/>
+        <EffectArray value="DevourerMPWeaponApplySc1"/>
+        <EffectArray value="DevourerMPWeaponSearch2"/>
+    </CEffectSet>
+
+    <CEffectDamage id="GuardianMPWeaponDamageSc1" parent="DU_WEAP_MISSILE">
+        <EditorCategories value="Race:Zerg"/>
+        <Visibility value="Visible"/>
+        <Amount value="20"/>
+    </CEffectDamage>
+
+    <CEffectLaunchMissile id="GuardianMPWeaponLMSc1">
+        <EditorCategories value="Race:Zerg"/>
+        <ImpactEffect value="GuardianMPWeaponDamageSc1"/>
+        <AmmoUnit value="GuardianMPWeaponSc1"/>
+    </CEffectLaunchMissile>
+
+    <CEffectDamage id="HydraliskMeleeSc1" parent="DU_WEAP">
+        <Name value="Effect/Name/NeedleSpinesDamage"/>
+        <EditorCategories value="Race:Zerg"/>
+        <Marker Link="Effect/NeedleSpinesDamage"/>
+        <AttributeBonus index="Armored" value="4"/>
+        <Amount value="6"/>
+        <Death value="Eviscerate"/>
+    </CEffectDamage>
+
+    <CEffectDamage id="NeedleSpinesDamageSc1" parent="DU_WEAP">
+        <EditorCategories value="Race:Zerg"/>
+        <Kind value="Ranged"/>
+        <Amount value="6"/>
+        <AttributeBonus index="Armored" value="6"/>
+    </CEffectDamage>
+
+
+    <CEffectLaunchMissile id="NeedleSpinesLaunchMissileSc1">
+        <EditorCategories value="Race:Zerg"/>
+        <ImpactEffect value="NeedleSpinesDamageSc1"/>
+        <AmmoUnit value="NeedleSpinesWeaponSc1"/>
+    </CEffectLaunchMissile>
+
+    <CEffectEnumArea id="GlaiveWurmE3Sc1">
+        <ValidatorArray value="HaveHotSViciousGlaive"/>
+        <EditorCategories value="Race:Zerg"/>
+        <ExcludeArray Value="Outer"/>
+        <ExcludeArray Value="Target"/>
+        <SearchFilters value="Visible;Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="3" Effect="GlaiveWurmM4Sc1"/>
+        <MaxCount value="1"/>
+    </CEffectEnumArea>
+
+    <CEffectEnumArea id="GlaiveWurmE4Sc1">
+        <EditorCategories value="Race:Zerg"/>
+        <ExcludeArray Value="Outer"/>
+        <ExcludeArray Value="Target"/>
+        <SearchFilters value="Visible;Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="3" Effect="GlaiveWurmM5Sc1"/>
+        <MaxCount value="1"/>
+    </CEffectEnumArea>
+
+    <CEffectEnumArea id="GlaiveWurmE5Sc1">
+        <EditorCategories value="Race:Zerg"/>
+        <ExcludeArray Value="Outer"/>
+        <ExcludeArray Value="Target"/>
+        <SearchFilters value="Visible;Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="3" Effect="GlaiveWurmM6Sc1"/>
+        <MaxCount value="1"/>
+    </CEffectEnumArea>
+
+    <CEffectLaunchMissile id="GlaiveWurmM4Sc1">
+        <ValidatorArray value="noMarkers"/>
+        <EditorCategories value="Race:Zerg"/>
+        <ImpactEffect value="GlaiveWurmS4Sc1"/>
+        <AmmoUnit value="GlaiveWurmM4WeaponSc1"/>
+    </CEffectLaunchMissile>
+
+    <CEffectLaunchMissile id="GlaiveWurmM5Sc1">
+        <ValidatorArray value="noMarkers"/>
+        <EditorCategories value="Race:Zerg"/>
+        <ImpactEffect value="GlaiveWurmS5Sc1"/>
+        <AmmoUnit value="GlaiveWurmM5WeaponSc1"/>
+    </CEffectLaunchMissile>
+
+    <CEffectLaunchMissile id="GlaiveWurmM6Sc1">
+        <ValidatorArray value="noMarkers"/>
+        <EditorCategories value="Race:Zerg"/>
+        <ImpactEffect value="GlaiveWurmU6Sc1"/>
+        <AmmoUnit value="GlaiveWurmM6WeaponSc1"/>
+    </CEffectLaunchMissile>
+
+    <CEffectSet id="GlaiveWurmS3Sc1">
+        <EditorCategories value="Race:Zerg"/>
+        <EffectArray value="GlaiveWurmU3Sc1"/>
+        <EffectArray value="GlaiveWurmE3Sc1"/>
+    </CEffectSet>
+
+    <CEffectSet id="GlaiveWurmS4Sc1">
+        <EditorCategories value="Race:Zerg"/>
+        <EffectArray value="GlaiveWurmU4Sc1"/>
+        <EffectArray value="GlaiveWurmE4Sc1"/>
+    </CEffectSet>
+
+    <CEffectSet id="GlaiveWurmS5Sc1">
+        <EditorCategories value="Race:Zerg"/>
+        <EffectArray value="GlaiveWurmU5Sc1"/>
+        <EffectArray value="GlaiveWurmE5Sc1"/>
+    </CEffectSet>
+
+    <CEffectDamage id="GlaiveWurmU4Sc1" parent="DU_WEAP_MISSILE">
+        <EditorCategories value="Race:Zerg"/>
+        <Visibility value="Visible"/>
+        <Amount value="3"/>
+    </CEffectDamage>
+
+    <CEffectDamage id="GlaiveWurmU5Sc1" parent="DU_WEAP_MISSILE">
+        <EditorCategories value="Race:Zerg"/>
+        <Visibility value="Visible"/>
+        <Amount value="1"/>
+    </CEffectDamage>
+
+    <CEffectDamage id="GlaiveWurmU6Sc1" parent="DU_WEAP_MISSILE">
+        <EditorCategories value="Race:Zerg"/>
+        <Visibility value="Visible"/>
+        <Amount value="1"/>
+    </CEffectDamage>
+
+    <CEffectDamage id="GlaiveWurmU1Sc1" parent="DU_WEAP_MISSILE">
+        <EditorCategories value="Race:Zerg"/>
+        <Visibility value="Visible"/>
+        <Amount value="9"/>
+        <Death value="Disintegrate"/>
+    </CEffectDamage>
+
+    <CEffectEnumArea id="GlaiveWurmE1Sc1">
+        <EditorCategories value="Race:Zerg"/>
+        <ExcludeArray Value="Outer"/>
+        <ExcludeArray Value="Target"/>
+        <SearchFilters value="Visible;Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="3" Effect="GlaiveWurmM2Sc1"/>
+        <MaxCount value="1"/>
+    </CEffectEnumArea>
+
+    <CEffectSet id="GlaiveWurmS1Sc1">
+        <EditorCategories value="Race:Zerg"/>
+        <EffectArray value="GlaiveWurmU1Sc1"/>
+        <EffectArray value="GlaiveWurmE1Sc1"/>
+    </CEffectSet>
+
+    <CEffectLaunchMissile id="GlaiveWurmM2Sc1">
+        <ValidatorArray value="noMarkers"/>
+        <ValidatorArray value="TargetNotChangeling"/>
+        <EditorCategories value="Race:Zerg"/>
+        <ImpactEffect value="GlaiveWurmS2Sc1"/>
+        <AmmoUnit value="GlaiveWurmM2WeaponSc1"/>
+    </CEffectLaunchMissile>
+
+    <CEffectLaunchMissile id="GlaiveWurmSc1">
+        <EditorCategories value="Race:Terran"/>
+        <ImpactEffect value="GlaiveWurmS1Sc1"/>
+        <AmmoUnit value="GlaiveWurmWeaponSc1"/>
+    </CEffectLaunchMissile>
+
+    <CEffectLaunchMissile id="GlaiveWurmM3Sc1">
+        <ValidatorArray value="noMarkers"/>
+        <ValidatorArray value="TargetNotChangeling"/>
+        <EditorCategories value="Race:Zerg"/>
+        <ImpactEffect value="GlaiveWurmS3Sc1"/>
+        <AmmoUnit value="GlaiveWurmM3WeaponSc1"/>
+    </CEffectLaunchMissile>
+
+    <CEffectEnumArea id="GlaiveWurmE2Sc1">
+        <EditorCategories value="Race:Zerg"/>
+        <ExcludeArray Value="Outer"/>
+        <ExcludeArray Value="Target"/>
+        <SearchFilters value="Visible;Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="3" Effect="GlaiveWurmM3Sc1"/>
+        <MaxCount value="1"/>
+    </CEffectEnumArea>
+
+    <CEffectDamage id="GlaiveWurmU2Sc1" parent="DU_WEAP_MISSILE">
+        <EditorCategories value="Race:Zerg"/>
+        <Visibility value="Visible"/>
+        <Amount value="3"/>
+        <Death value="Disintegrate"/>
+    </CEffectDamage>
+
+    <CEffectSet id="GlaiveWurmS2Sc1">
+        <EditorCategories value="Race:Zerg"/>
+        <EffectArray value="GlaiveWurmU2Sc1"/>
+        <EffectArray value="GlaiveWurmE2Sc1"/>
+    </CEffectSet>
+
+    <CEffectDamage id="GlaiveWurmU3Sc1" parent="DU_WEAP_MISSILE">
+        <EditorCategories value="Race:Zerg"/>
+        <Visibility value="Visible"/>
+        <Amount value="1"/>
+        <Death value="Disintegrate"/>
+    </CEffectDamage>
+
+    <CEffectDamage id="AcidSalivaUSc1" parent="DU_WEAP_MISSILE">
+        <EditorCategories value="Race:Zerg"/>
+        <Amount value="16"/>
+        <Death value="Disintegrate"/>
+    </CEffectDamage>
+
+    <CEffectLaunchMissile id="AcidSalivaLMSc1">
+        <ValidatorArray index="0" value="RoachLMTargetFilters"/>
+        <EditorCategories value="Race:Zerg"/>
+        <ImpactEffect value="AcidSalivaUSc1"/>
+        <AmmoUnit value="AcidSalivaWeaponSc1"/>
+    </CEffectLaunchMissile>
+
+    <CEffectDamage id="RoachUMeleeSc1" parent="DU_WEAP_MISSILE">
+        <Name value="Effect/Name/AcidSalivaU"/>
+        <EditorCategories value="Race:Zerg"/>
+        <Marker Link="Effect/AcidSalivaU"/>
+        <Kind value="Melee"/>
+        <Amount value="16"/>
+        <Death value="Eviscerate"/>
+    </CEffectDamage>
+
+
+    <CEffectDamage id="SuicideDamageSc1">
+        <EditorCategories value="Race:Zerg"/>
+        <LaunchLocation Value="TargetUnit"/>
+        <ImpactLocation Value="TargetUnit"/>
+        <Amount value="110"/>
+        <AreaArray/>
+        <ExcludeArray Value="Target"/>
+        <SearchFilters value="Air;Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <SearchFlags index="OffsetByUnitRadius" value="1"/>
+        <SearchFlags index="OffsetAreaByAngle" value="1"/>
+    </CEffectDamage>
+
+    <CEffectSet id="SuicideSetSc1">
+        <EditorCategories value="Race:Zerg"/>
+        <EffectArray value="SuicideDamageSc1"/>
+        <EffectArray value="Suicide"/>
+    </CEffectSet>
+
+
+<CEffectCreatePersistent id="LurkerMPSc1">
+        <EditorCategories value="Race:Zerg"/>
+        <WhichLocation Value="SourcePoint"/>
+        <TimeScaleSource Value="Caster"/>
+        <PeriodCount value="9"/>
+        <PeriodicValidator value="CasterIsAttacking"/>
+        <PeriodicEffectArray value="LurkerMPCUSc1"/>
+        <PeriodicOffsetArray value="0,-1,0"/>
+        <PeriodicOffsetArray value="0,-2,0"/>
+        <PeriodicOffsetArray value="0,-3,0"/>
+        <PeriodicOffsetArray value="0,-4,0"/>
+        <PeriodicOffsetArray value="0,-5,0"/>
+        <PeriodicOffsetArray value="0,-6,0"/>
+        <PeriodicOffsetArray value="0,-7,0"/>
+        <PeriodicOffsetArray value="0,-8,0"/>
+        <PeriodicOffsetArray value="0,-9,0"/>
+        <PeriodicOffsetArray value="0,-10,0"/>
+        <PeriodicOffsetArray value="0,-11,0"/>
+        <PeriodicOffsetArray value="0,-12,0"/>
+        <PeriodicPeriodArray value="0"/>
+        <PeriodicPeriodArray value="0.125"/>
+        <PeriodicPeriodArray value="0.125"/>
+        <PeriodicPeriodArray value="0.125"/>
+        <PeriodicPeriodArray value="0.125"/>
+        <PeriodicPeriodArray value="0.125"/>
+        <PeriodicPeriodArray value="0.125"/>
+        <PeriodicPeriodArray value="0.125"/>
+        <PeriodicPeriodArray value="0.125"/>
+        <PeriodicPeriodArray value="0.125"/>
+        <PeriodicPeriodArray value="0.125"/>
+        <PeriodicPeriodArray value="0.125"/>
+        <PeriodicPeriodArray value="0.125"/>
+        <PeriodicPeriodArray value="0.125"/>
+        <PeriodicPeriodArray value="0.125"/>
+        <PeriodicPeriodArray value="0.125"/>
+        <PeriodicPeriodArray value="0.125"/>
+        <PeriodicPeriodArray value="0.125"/>
+        <PeriodicPeriodArray value="0.125"/>
+    </CEffectCreatePersistent>
+
+    <CEffectCreateUnit id="LurkerMPCUSc1">
+        <EditorCategories value="Race:Zerg"/>
+        <WhichLocation Value="TargetPoint"/>
+        <CreateFlags index="Birth" value="0"/>
+        <CreateFlags index="DropOff" value="0"/>
+        <CreateFlags index="OffsetByRadius" value="0"/>
+        <CreateFlags index="Placement" value="0"/>
+        <CreateFlags index="ProvideFood" value="0"/>
+        <CreateFlags index="TechComplete" value="0"/>
+        <CreateFlags index="UseFood" value="0"/>
+        <CreateFlags index="NormalizeSpawnOffset" value="0"/>
+        <SpawnEffect value="LurkerMPSearchSetSc1"/>
+        <SpawnUnit value="InvisibleTargetDummySc1"/>
+    </CEffectCreateUnit>
+
+
+    <CEffectDamage id="LurkerMPDamageSc1" parent="DU_WEAP_SPLASH">
+        <ValidatorArray value="noMarkers"/>
+        <ValidatorArray value="NotInvulnerable"/>
+        <EditorCategories value="Race:Zerg"/>
+        <AttributeBonus index="Biological" value="10"/>
+        <Kind value="Spell"/>
+        <KindSplash value="Splash"/>
+        <Amount value="20"/>
+        <Death value="Blast"/>
+        <SearchFlags index="SameCliff" value="0"/>
+    </CEffectDamage>
+
+
+    <CEffectDestroyPersistent id="LurkerMPDestroyPersistentSc1">
+        <EditorCategories value="Race:Zerg"/>
+        <OwningPlayer Value="Source"/>
+        <WhichLocation Value="SourcePoint"/>
+        <Effect value="LurkerMP"/>
+        <Count value="1"/>
+    </CEffectDestroyPersistent>
+
+
+    <CEffectEnumArea id="LurkerMPSearchSc1">
+        <ValidatorArray value="CliffLevelGE1"/>
+        <ValidatorArray value="WeaponInRange"/>
+        <EditorCategories value="Race:Zerg"/>
+        <IncludeArray Effect="LurkerMP" Value="Target"/>
+        <IncludeArray Effect="LurkerMPExtended" Value="Target"/>
+        <SearchFilters value="Ground;Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="0.5" Effect="LurkerMPDamageSc1"/>
+        <SearchFlags index="CallForHelp" value="1"/>
+    </CEffectEnumArea>
+
+
+    <CEffectSet id="LurkerMPSearchSetSc1">
+        <EditorCategories value="Race:Zerg"/>
+        <EffectArray value="LurkerMPWeaponRangeSwitchSc1"/>
+        <EffectArray value="KillRemove"/>
+    </CEffectSet>
+
+
+    <CEffectSwitch id="LurkerMPWeaponRangeSwitchSc1">
+        <EditorCategories value="Race:Zerg"/>
+        <CaseArray Validator="WeaponInRange" Effect="LurkerMPSearchSc1"/>
+        <CaseDefault value="LurkerMPDestroyPersistentSc1"/>
+    </CEffectSwitch>
+
+
+    <CEffectLaunchMissile id="SunkenColonly_Sc1">
+        <ValidatorArray index="0" value="TargetNotAcrossChasm"/>
+        <ValidatorArray value="ImpalerIsBurrowed"/>
+        <EditorCategories value="Race:Zerg"/>
+        <ImpactEffect value="SunkenColonlyDamage_Sc1"/>
+        <AmmoUnit value="SunkenColonlyWeapon_Sc1"/>
+    </CEffectLaunchMissile>
+
+    <CEffectDamage id="SunkenColonlyDamage_Sc1">
+        <EditorCategories value="Race:Zerg"/>
+        <ResponseFlags index="Acquire" value="1"/>
+        <ResponseFlags index="Flee" value="1"/>
+        <ImpactLocation Value="TargetUnit"/>
+        <AttributeBonus index="Armored" value="10"/>
+        <ArmorReduction value="1"/>
+        <Flags index="Notification" value="1"/>
+        <Kind value="Ranged"/>
+        <Amount value="25"/>
+        <Death value="Blast"/>
+        <SearchFlags index="CallForHelp" value="1"/>
+    </CEffectDamage>
+
+
+    <CEffectDamage id="KaiserBladesDamageSc1" parent="DU_WEAP">
+        <EditorCategories value="Race:Zerg"/>
+        <KindSplash value="Melee"/>
+        <Amount value="35"/>
+        <Death value="Eviscerate"/>
+        <AreaArray Arc="45" Radius="2" Fraction="0.33"/>
+        <AreaArray Arc="180" Radius="2" Fraction="0.33"/>
+        <ExcludeArray Value="Target"/>
+        <SearchFilters value="Ground;Player,Ally,Neutral,Stasis,Dead,Hidden,Invulnerable"/>
+    </CEffectDamage>
+
+
+    <CEffectDamage id="ClawsSc1" parent="DU_WEAP">
+        <EditorCategories value="Race:Zerg"/>
+        <Amount value="5"/>
+    </CEffectDamage>
+    
+    
 </Catalog>
